@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="ui.game.GameFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/double_margin">
+
+
+        <ImageView android:id="@+id/imgGame"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_header_height"
+            android:src="@drawable/android_category_simple"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/fontQuestion"
+            app:layout_constraintTop_toBottomOf="@id/imgGame"
+            app:layout_constraintBottom_toTopOf="@id/groupAns"/>
+
+        <RadioGroup android:id="@+id/groupAns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/question"
+            app:layout_constraintBottom_toTopOf="@+id/btnSubmit">
+
+            <RadioButton android:id="@+id/ans1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontAnswer"/>
+            <RadioButton android:id="@+id/ans2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontAnswer"/>
+            <RadioButton android:id="@+id/ans3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontAnswer"/>
+            <RadioButton android:id="@+id/ans4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontAnswer"/>
+
+        </RadioGroup>
+
+        <Button android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_btnSubmit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

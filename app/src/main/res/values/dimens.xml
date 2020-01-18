@@ -5,4 +5,6 @@
     <dimen name="quadruple_margin">32dp</dimen>
     <dimen name="main_toolbar_elevation">8dp</dimen>
     <dimen name="image_header_height">192dp</dimen>
+    <dimen name="fontQuestion">24sp</dimen>
+    <dimen name="fontAnswer">20sp</dimen>
 </resources>
