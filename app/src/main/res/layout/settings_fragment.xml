@@ -3,11 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ui.setting.SettingsFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_margin="@dimen/quadruple_margin">
+
+        <TextView android:id="@+id/lblNumQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base_margin"
+            android:text="@string/settings_numberOfQuestions"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView android:id="@+id/iconQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/double_margin"
+            android:src="@drawable/ic_question_answer_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblNumQuestion"/>
+
+        <SeekBar android:id="@+id/seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:min="1"
+            android:max="10"
+            app:layout_constraintTop_toBottomOf="@id/lblNumQuestion"
+            app:layout_constraintLeft_toRightOf="@id/iconQuestion"
+            app:layout_constraintRight_toLeftOf="@id/numQuestion"
+            android:layout_marginBottom="@dimen/double_margin"/>
+
+        <TextView android:id="@+id/numQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minQuestion"
+            app:layout_constraintTop_toBottomOf="@id/lblNumQuestion"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <ImageView android:id="@+id/iconDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_margin"
+            android:src="@drawable/ic_web_asset_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iconQuestion"/>
+
+        <TextView android:id="@+id/lblDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_showDialog"
+            android:layout_marginTop="@dimen/double_margin"
+            app:layout_constraintRight_toLeftOf="@+id/switchDialog"
+            app:layout_constraintLeft_toRightOf="@id/iconDialog"
+            app:layout_constraintTop_toBottomOf="@id/iconQuestion"/>
+
+        <Switch android:id="@+id/switchDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_margin"
+            app:layout_constraintTop_toBottomOf="@id/seekbar"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

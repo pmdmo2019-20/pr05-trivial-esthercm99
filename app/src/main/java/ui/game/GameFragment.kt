@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import data.GameSettings
 
 import es.iessaladillo.pedrojoya.pr05_trivial.R
 import kotlinx.android.synthetic.main.fragment_game.*
@@ -31,7 +32,9 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        GameSettings.goBack = true
         setupAppBar()
+        viewModel.selectQuestion()
         setupViews()
         submit()
     }
@@ -39,11 +42,13 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun submit() {
         btnSubmit.setOnClickListener {
             when {
-                ans1.isChecked -> viewModel.nextQuestion(ans1.text.toString())
-                ans2.isChecked -> viewModel.nextQuestion(ans2.text.toString())
-                ans3.isChecked -> viewModel.nextQuestion(ans3.text.toString())
-                ans4.isChecked -> viewModel.nextQuestion(ans4.text.toString())
+                ans1.isChecked -> viewModel.nextQuestion(String.format("%s", ans1.text))
+                ans2.isChecked -> viewModel.nextQuestion(String.format("%s", ans2.text))
+                ans3.isChecked -> viewModel.nextQuestion(String.format("%s", ans3.text))
+                ans4.isChecked -> viewModel.nextQuestion(String.format("%s", ans4.text))
             }
+            setupAppBar()
+            setupViews()
         }
     }
 
@@ -55,10 +60,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         }
     }
     private fun setupViews() {
-        question.text = viewModel.actualQuestion?.question
-        ans1.text = viewModel.actualQuestion?.answer1?.answer
-        ans2.text = viewModel.actualQuestion?.answer2?.answer
-        ans3.text = viewModel.actualQuestion?.answer3?.answer
-        ans4.text = viewModel.actualQuestion?.answer4?.answer
+        question.text = viewModel.actualQuestion.question
+        ans1.text = viewModel.actualQuestion.answer1.answer
+        ans2.text = viewModel.actualQuestion.answer2.answer
+        ans3.text = viewModel.actualQuestion.answer3.answer
+        ans4.text = viewModel.actualQuestion.answer4.answer
     }
 }

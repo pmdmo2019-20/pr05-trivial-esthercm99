@@ -1,17 +1,10 @@
 package ui.main
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.activity.viewModels
+import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import es.iessaladillo.pedrojoya.pr05_trivial.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.title_fragment.*
-import ui.about.AboutFragment
-import ui.game.GameFragment
-import ui.reglas.RulesFragment
 import ui.title.TitleFragment
 
 class MainActivity: AppCompatActivity() {
@@ -25,14 +18,22 @@ class MainActivity: AppCompatActivity() {
     }
 
     // Para poder volver atrás:
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // if (GameSettings.goBack && GameSettings.showDialog) {} else {}
+        goBack()
+        return true
+    }
     override fun onSupportNavigateUp(): Boolean {
+        goBack()
+        return true
+    }
+    private fun goBack() {
         onBackPressed()
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(false)
             title = getString(R.string.app_name)
             navigateToInitialDestination()
         }
-        return true
     }
 
     // Navegaciones:

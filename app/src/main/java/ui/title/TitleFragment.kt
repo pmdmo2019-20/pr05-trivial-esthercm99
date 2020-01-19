@@ -1,20 +1,16 @@
 package ui.title
 
 import android.os.Bundle
-
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-
 import es.iessaladillo.pedrojoya.pr05_trivial.R
-
 import ui.about.AboutFragment
 import ui.game.GameFragment
 import ui.reglas.RulesFragment
-
 import android.view.*
 import kotlinx.android.synthetic.main.title_fragment.*
-
+import ui.setting.SettingsFragment
 
 class TitleFragment : Fragment(R.layout.title_fragment) {
 
@@ -40,7 +36,7 @@ class TitleFragment : Fragment(R.layout.title_fragment) {
         when (item.itemId) {
             R.id.btnAbout -> showAbout()
             R.id.btnRules -> showRules()
-            //R.id.btnSettings -> viewModel.settings()
+            R.id.btnSettings -> showSettings()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -49,7 +45,7 @@ class TitleFragment : Fragment(R.layout.title_fragment) {
     private fun showAbout() {
         requireActivity().supportFragmentManager.commit {
             replace(R.id.fcDetail, AboutFragment.newInstance())
-                .addToBackStack(null)
+            addToBackStack(null)
         }
     }
     private fun showRules() {
@@ -58,7 +54,12 @@ class TitleFragment : Fragment(R.layout.title_fragment) {
             addToBackStack(null)
         }
     }
-
+    private fun showSettings() {
+        requireActivity().supportFragmentManager.commit {
+            replace(R.id.fcDetail, SettingsFragment.newInstance())
+            addToBackStack(null)
+        }
+    }
     private fun setupAppBar() {
         (requireActivity() as AppCompatActivity).supportActionBar?.run {
             setDisplayHomeAsUpEnabled(false)
