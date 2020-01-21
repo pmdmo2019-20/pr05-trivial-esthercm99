@@ -15,8 +15,9 @@ object LocalRepository : Repository {
         Question("Web browser available in android is based on", Answer("Chrome", false), Answer("Firefox", false), Answer("Opera", false), Answer("Open source Webkit", true)),
         Question("What is the RecyclerView?", Answer("It's flexible and efficient version of ListView", true), Answer("It is an inflexible and efficient version of ListView", false), Answer("It is an inflexible and inefficient version of ListView", false), Answer("It's flexible and inefficient version of ListView", false)),
         Question("What was the latest version of android in 2018?", Answer("KitKat (4.4)", false), Answer("Nougat (7.0)", false), Answer("Oreo (8.0)", false), Answer("Pie (9.0)", true)),
-        Question("When was the first version of android?", Answer("2011", false), Answer("2008", true), Answer("2009", false), Answer("2012", false))
-    )
+        Question("When was the first version of android?", Answer("2011", false), Answer("2008", true), Answer("2009", false), Answer("2012", false)),
+        Question("What is the Android version names related to?", Answer("Flowers", false), Answer("Sweets", true), Answer("Countries", false), Answer("Movies", false)))
+
 
     override fun queryAllQuestion(): List<Question> = questions
 

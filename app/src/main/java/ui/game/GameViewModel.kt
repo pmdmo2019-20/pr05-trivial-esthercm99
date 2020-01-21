@@ -36,26 +36,33 @@ class GameViewModel(private val fragment: GameFragment) : ViewModel() {
     }
 
     fun selectQuestion() {
-        val exit = false
         var rnd : Int
+        var rep = false
 
-        while (!exit) {
-            rnd = Random.nextInt(1, 10) - 1
-            if (questionResolves.isEmpty()) {
-                actualQuestion = questions[rnd]
-                questionResolves.add(rnd)
-                return
-            } else {
-                for (i in 0 .. questions.size) {
-                    if (questionResolves[i] != rnd) {
-                        actualQuestion = questions[rnd]
-                        questionResolves.add(rnd)
-                        return
+        rnd = Random.nextInt(10)
+
+        if (questionResolves.isEmpty()) {
+            actualQuestion = questions[rnd]
+            questionResolves.add(rnd)
+        } else {
+            while(true) {
+                for (i in 0 until questionResolves.size) {
+                    if (questionResolves[i] == rnd) {
+                        rep = true
                     }
                 }
+
+                if (rep) {
+                    rnd = Random.nextInt(10)
+                    rep = false
+                } else {
+                    actualQuestion = questions[rnd]
+                    questionResolves.add(rnd)
+                    return
+                }
+
             }
         }
-
     }
 
     private fun checkCorrectAnswer(answer: String) {
@@ -73,12 +80,9 @@ class GameViewModel(private val fragment: GameFragment) : ViewModel() {
             replace(R.id.fcDetail, GameWonFragment.newInstance())
         }
     }
-
     private fun goToLoseFragment() {
         fragment.requireActivity().supportFragmentManager.commit {
             replace(R.id.fcDetail, GameOverFragment.newInstance())
         }
     }
-
-
 }

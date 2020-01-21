@@ -47,6 +47,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 ans3.isChecked -> viewModel.nextQuestion(String.format("%s", ans3.text))
                 ans4.isChecked -> viewModel.nextQuestion(String.format("%s", ans4.text))
             }
+
             setupAppBar()
             setupViews()
         }
