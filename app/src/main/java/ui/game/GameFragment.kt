@@ -61,6 +61,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         }
     }
     private fun setupViews() {
+        groupAns.clearCheck()
         question.text = viewModel.actualQuestion.question
         ans1.text = viewModel.actualQuestion.answer1.answer
         ans2.text = viewModel.actualQuestion.answer2.answer
