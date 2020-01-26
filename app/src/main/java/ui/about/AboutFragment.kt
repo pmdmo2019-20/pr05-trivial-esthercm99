@@ -20,6 +20,5 @@ class AboutFragment : Fragment(R.layout.about_fragment) {
             setDisplayHomeAsUpEnabled(true)
             title = getString(R.string.title_mnuAbout)
         }
-        GameSettings.goBack = false
     }
 }

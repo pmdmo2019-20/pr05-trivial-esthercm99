@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import es.iessaladillo.pedrojoya.pr05_trivial.R
 import ui.title.TitleFragment
+import android.app.AlertDialog
+import data.GameSettings
+import ui.game.GameFragment
 
 class MainActivity: AppCompatActivity() {
 
@@ -19,7 +22,6 @@ class MainActivity: AppCompatActivity() {
 
     // Para poder volver atrás:
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        // if (GameSettings.goBack && GameSettings.showDialog) {} else {}
         goBack()
         return true
     }
@@ -28,10 +30,14 @@ class MainActivity: AppCompatActivity() {
         return true
     }
     private fun goBack() {
-        onBackPressed()
-        supportActionBar?.run {
-            setDisplayHomeAsUpEnabled(false)
-            title = getString(R.string.app_name)
+        if (supportFragmentManager.findFragmentById(R.id.fcDetail) is GameFragment && GameSettings.showDialog) {
+            AlertDialog.Builder(this).setTitle("Confirmation")
+                                            .setMessage("Are you sure you want to quit the game?")
+                                            .setCancelable(false)
+                                            .setPositiveButton("YES") { _, _ -> navigateToInitialDestination() }
+                                            .setNegativeButton("NO"){ _, _ -> }             // No hace nada
+                                            .show()
+        } else {
             navigateToInitialDestination()
         }
     }
@@ -42,4 +48,5 @@ class MainActivity: AppCompatActivity() {
             replace(R.id.fcDetail, TitleFragment.newInstance())
         }
     }
+
 }

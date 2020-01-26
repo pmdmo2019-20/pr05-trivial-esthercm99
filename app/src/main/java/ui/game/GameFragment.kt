@@ -1,14 +1,10 @@
 package ui.game
 
-
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import data.GameSettings
-
 import es.iessaladillo.pedrojoya.pr05_trivial.R
 import kotlinx.android.synthetic.main.fragment_game.*
 
@@ -32,7 +28,6 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        GameSettings.goBack = true
         setupAppBar()
         viewModel.selectQuestion()
         setupViews()

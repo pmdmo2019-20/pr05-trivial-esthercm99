@@ -5,5 +5,4 @@ object GameSettings {
     var actualQuestion : Int = 1
     var isWinner : Boolean = true
     var showDialog : Boolean = false
-    var goBack : Boolean = false
 }

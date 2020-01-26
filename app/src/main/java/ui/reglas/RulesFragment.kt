@@ -26,6 +26,5 @@ class RulesFragment : Fragment(R.layout.rules_fragment) {
             setHasOptionsMenu(false)
             title = getString(R.string.title_mnuRules)
         }
-        GameSettings.goBack = false
     }
 }
